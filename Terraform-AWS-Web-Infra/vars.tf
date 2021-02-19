@@ -51,6 +51,8 @@ variable "ssh_user" {
   default     = "ec2-user"
 }
 
+# Define SSH Private Key File for connection. Do remeber to change the 
+# key file path below to match your environment. 
 variable "key_file" {
   description = "key path"
   default = "D:\\mykey\\mykey.pem"
