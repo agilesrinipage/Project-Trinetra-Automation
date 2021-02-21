@@ -49,14 +49,13 @@ resource "aws_instance" "devopsserver" {
     inline = [
       "sudo yum -y update",
       "sudo amazon-linux-extras install -y docker epel",
+      "sudo yum install -y ${var.java_version}-openjdk-devel",
+      "sudo yum install -y maven",
       "sudo service docker start",
       "sudo usermod -a -G docker ec2-user",
       "sudo docker run hello-world",
-      "sudo yum install -y ${var.java_version}-openjdk-devel",
-      "sudo docker pull codingtoglory/jenkins:v1.0",
-      "sudo docker run --name jenkins -d --rm -p 8080:8080 codingtoglory\\jenkins:v1.0",
-
-
+      "sudo docker build -t ${var.image_tag} .",
+      "sudo docker run --name jenkins -d --rm -p 8080:8080 ${var.image_tag}",
     ]
        
   }

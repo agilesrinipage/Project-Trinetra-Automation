@@ -12,6 +12,9 @@ variable "aws_instance" {default = "t2.micro"}
 #Define the Java version to be installed in this instance
 variable "java_version" {default = "java-1.8.0"}
 
+#Provide docker jenkins image tag
+variable "image_tag" {default = "custom-jenkins:v1.0"}
+
 # Define AMI to be used
 variable "AMI" {
     type = map
